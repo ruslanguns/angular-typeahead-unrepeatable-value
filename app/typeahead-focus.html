@@ -1,0 +1,25 @@
+<form #myForm="ngForm" (ngSubmit)="onSubmit()">
+  <label for="typeahead-focus">¿Cuál es tu materia favorita?:</label>
+  <input
+    id="typeahead-focus"
+    type="text"
+    class="form-control"
+    style.width="ancho"
+    [(ngModel)]="model"
+    [ngModelOptions]="{standalone: true}"
+    [ngbTypeahead]="search"
+    (focus)="focus$.next($event.target.value)"
+    (click)="click$.next($event.target.value)"
+    [resultFormatter]="formatter"
+    [ngbTypeahead]="search"
+    #instance="ngbTypeahead"
+    (change)="pintar($event)"
+  />
+
+  <button type="submit"
+          class="btn btn-primary btn-block mt-2">
+          Guardar
+  </button>
+</form>
+<hr>
+<pre>Materias: {{ materias | json }}</pre>
