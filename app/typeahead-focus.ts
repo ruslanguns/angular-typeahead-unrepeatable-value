@@ -8,8 +8,7 @@ import {NgbTypeaheadConfig} from '@ng-bootstrap/ng-bootstrap';
   selector: 'ngbd-typeahead-focus',
   templateUrl: './typeahead-focus.html',
   styles: [`
-  // .form-control { width: 300px; }
-  .dropdown-menu { width: 90%; box-sizing: border-box;}
+    .dropdown-menu { width: 90%; box-sizing: border-box;}
   `],
   encapsulation: ViewEncapsulation.None,
   providers: [NgbTypeaheadConfig]
@@ -23,7 +22,6 @@ export class NgbdTypeaheadFocus implements OnInit {
   return s.charAt(0).toUpperCase() + s.slice(1)
 }
 
-  @ViewChild('elemento', {static: true}) elemento: ElementRef
   @ViewChild('instance', {static: true}) instance: NgbTypeahead;
   focus$ = new Subject<string>();
   click$ = new Subject<string>();
@@ -66,10 +64,6 @@ export class NgbdTypeaheadFocus implements OnInit {
     array.map(v => s.add(v));
     s.add(newValue.toLowerCase())
     return Array.from(s) as string[]
-  }
-
-  getWidthFromElement(): number {
-    return this.elemento.nativeElement.offsetHeight;
   }
 
   pintar(e) {
